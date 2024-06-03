@@ -26,8 +26,8 @@ const DebugLogs = false;
 const EnableDiscordBot = true;
 
 // DISCORD BOT
-const DiscordBotToken = "CHANGE";
-const DiscordGuildId = "000000000000000000";
+const DiscordBotToken = "";
+const DiscordGuildId = "887338135158132757";
 
 // STAFF CHAT
 const EnableStaffChatForwarding = false;
