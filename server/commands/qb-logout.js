@@ -9,27 +9,32 @@
  * or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
  */
 
-module.exports = {
-    name: "logout",
-    description: "send a player back to the character selection screen",
-    role: "admin",
+module.exports = class cmd extends Command {
+    constructor(file) {
+        super("logout", file, {
+            description: "send a player back to the character selection screen",
+            role: "admin",
 
-    options: [
-        {
-            name: "id",
-            description: "Player's current id",
-            required: true,
-            type: "INTEGER",
-        },
-    ],
+            options: [
+                {
+                    name: "id",
+                    description: "Player's current id",
+                    required: true,
+                    type: djs.ApplicationCommandOptionType.Integer,
+                },
+            ],
+        });
+    }
 
-    run: async (client, interaction, args) => {
-        if (!GetPlayerName(args.id)) return interaction.reply({ content: "This ID seems invalid.", ephemeral: true });
+    async run(interaction, args) {
+        if (!GetPlayerName(args.id)) return interaction.sreply("This ID seems invalid.");
 
-        client.QBCore.Player.Logout(args.id);
-        emitNet("qb-multicharacter:client:chooseChar", args.id);
+        QBCore.Player.Logout(args.id);
+        setImmediate(() => {
+            emitNet("qb-multicharacter:client:chooseChar", args.id);
+        });
 
-        client.utils.log.info(`[${interaction.member.displayName}] logged ${GetPlayerName(args.id)} (${args.id}) out`);
-        return interaction.reply({ content: `${GetPlayerName(args.id)} (${args.id}) was sent to the character screen.`, ephemeral: false });
-    },
+        zlog.info(`[${interaction.member.displayName}] logged ${GetPlayerName(args.id)} (${args.id}) out`);
+        return interaction.reply(`${GetPlayerName(args.id)} (${args.id}) was sent to the character screen.`);
+    }
 };

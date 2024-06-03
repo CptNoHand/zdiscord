@@ -9,15 +9,18 @@
  * or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
  */
 
-module.exports = {
-    name: "onlinecount",
-    description: "Number of players currently online",
+module.exports = class cmd extends Command {
+    constructor(file) {
+        super(Lang.t("cmd_onlinecount"), file, {
+            description: Lang.t("desc_onlinecount"),
+        });
+    }
 
-    run: async (client, interaction) => {
+    async run(interaction) {
         const playerNumber = GetNumPlayerIndices();
-        let message = "Nobody is online right now.";
-        if (playerNumber === 1) message = "There is 1 person online right now.";
-        else if (playerNumber > 1) message = `There are ${playerNumber} people online right now.`;
-        return interaction.reply({ content: message, ephemeral: false });
-    },
+        let message = Lang.t("nobody_online");
+        if (playerNumber === 1) message = Lang.t("onlinecount_one_person");
+        else if (playerNumber > 1) message = Lang.t("onlinecount_total", { count: playerNumber });
+        return interaction.sreply(message);
+    }
 };
