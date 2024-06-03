@@ -8,12 +8,12 @@
  * GENERAL CONFIGURATION SETTINGS
  ********************************/
 
-const LanguageLocaleCode = "en";
+const LanguageLocaleCode = "de";
 
 // PUBLIC VALUES
-const FiveMServerName = "My FiveM Server";
-const DiscordInviteLink = "https://discord.gg/fivem";
-const FiveMServerIP = "127.0.0.1";
+const FiveMServerName = "My Life Be Like";
+const DiscordInviteLink = "https://discord.gg/3xk3KHHAAB";
+const FiveMServerIP = "92.117.111.27";
 
 // This spams the console, only enable for testing if needed
 const DebugLogs = false;
@@ -31,20 +31,20 @@ const DiscordGuildId = "887338135158132757";
 
 // STAFF CHAT
 const EnableStaffChatForwarding = false;
-const DiscordStaffChannelId = "000000000000000000";
+const DiscordStaffChannelId = "887338135485308971";
 const AdditionalStaffChatRoleIds = [
     // "000000000000000",
 ];
 
 // WHITELISTING / ALLOWLISTING
-const EnableWhitelistChecking = true;
-const DiscordWhitelistRoleIds = "000000000000000000, 000000000000000000";
+const EnableWhitelistChecking = false;
+const DiscordWhitelistRoleIds = [ "887338135174930479" ]; //887338135174930479
 
 // SLASH COMMANDS / DISCORD PERMISSIONS
 const EnableDiscordSlashCommands = true;
-const DiscordModRoleId = "000000000000000000";
-const DiscordAdminRoleId = "000000000000000000";
-const DiscordGodRoleId = "000000000000000000";
+const DiscordModRoleId = "887338135221051437";
+const DiscordAdminRoleId = "887338135233626198";
+const DiscordGodRoleId = "887338135233626197";
 
 // DISCORD BOT STATUS
 const EnableBotStatusMessages = true;
